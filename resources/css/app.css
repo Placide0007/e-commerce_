@@ -1,0 +1,136 @@
+:root {
+    --primary-bg: #08162c;
+    --navbar-bg: #FEFEFE;
+    --primary-btn: #0081AB;
+    --secondary-bg: #E8EDDF;
+    --secondary-btn: #CFDBD5;
+    --dark-border: #333533;
+}
+
+:root {
+    --secondary-bg: #ffff;
+    --navbar-bg: #ffffff;
+    --primary-btn: #070d16;
+    --secondary-btn: #bae8e8;
+    --dark-border: #5a585836;
+    --nav-text: #08162c;
+    --nav-hover: #e3e3e3;
+    --text-primary: #08162c;
+    --text-secondary: #ffffffef;
+    --text-tertiary: #ffffffb0;
+    --input-bg: #f3eded25;
+    --dark-text: #292a34;
+}
+
+:root {
+    --text-danger: #c73b50;
+    --bg-danger: #c73b50;
+    --text-success: #18ac7a;
+    --bg-success: #18ac7a;
+    --text-warning: #ffaa00a6;
+    --bg-warning: #ffaa00a6;
+}
+
+*,
+::before,
+::after {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: 'Raleway';
+    font-size: 12px;
+}
+
+body {
+    background-color: var(--primary-bg);
+    /* color: var(--text-secondary); */ 
+    overflow-x: hidden;
+}
+
+.btn-primary {
+    color: var(--text-secondary);
+    background-color: var(--text-primary);
+    padding: 8px;
+    border: none;
+}
+
+.btn-success {
+    color: var(--text-secondary);
+    background-color: var(--text-success);
+    padding: 8px;
+    border: none;
+}
+
+.btn-warning {
+    color: var(--text-secondary);
+    background-color: var(--text-warning);
+    padding: 8px;
+    border: none;
+}
+
+.btn-danger {
+    color: var(--text-secondary);
+    background-color: var(--text-danger);
+    padding: 8px;
+    border: none;
+}
+
+.btn-sm {
+    padding: 4px;
+}
+
+.btn-lg {
+    padding: 8px;
+}
+
+input,
+select {
+    padding: 13px;
+    outline: none;
+    border: 1px solid var(--dark-border);
+}
+
+button,
+input , a{
+    border-radius: 2px;
+}
+
+.input-lg {
+    padding: 10px;
+}
+
+.input-sm {
+    padding: 5px;
+}
+
+a {
+    text-decoration: none;
+}
+
+.lead {
+    font-size: 16px;
+}
+
+.error{
+    color: var(--bg-danger);
+    margin-top: 3px;
+    font-size: smaller;
+}
+
+ul.pagination{
+    display: flex;
+    row-gap: 20px;
+    justify-content: center;
+    column-gap: 20px;
+    align-items: center;
+    list-style: none;
+    padding: 10px;
+    cursor: pointer;
+    background-color: var(--dark-border);
+}
+
+ul.pagination li a{
+    color: var(--text-secondary);
+}
+
+

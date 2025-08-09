@@ -1,0 +1,51 @@
+div.container{
+    margin: 40px;
+}
+
+table{
+    width: 100%;
+    border-collapse: collapse;
+    background-color:var(--secondary-bg);
+}
+
+table , td , th{
+    border: 1px solid var(--dark-border);
+    padding: 10px;
+}
+
+table th{
+    background-color: var(--dark-border);
+}
+
+table tr td{
+    text-align: center;
+}
+
+table tr td button{
+    cursor: pointer;
+}
+
+table td.action-section{
+    display: flex;
+    justify-content:center;
+    align-items: center;
+}
+
+p.is-empty{
+    color: var(--secondary-bg); 
+    background-color: var(--primary-bg);
+    text-align: center;
+}
+
+div.search-wrapper form{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+div.search-wrapper form input{
+    padding: 7px !important;
+    border-radius: 0 !important;
+}
+

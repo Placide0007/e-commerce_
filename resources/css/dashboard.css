@@ -1,0 +1,112 @@
+div.container {
+    color: var(--primary-bg);
+    background-color: var(--secondary-bg) !important;
+    margin: 2px;
+    border-radius: 2px;
+    padding: 10px;
+    transition: .4s;
+    margin-left: 0;
+}
+
+div.big-container {
+    background-color: var(--secondary-bg);
+}
+
+/* div.big-container{} */
+
+
+section#hero {
+    border: 1px solid var(--dark-border);
+    position: relative;
+    padding: 0 20px 0 20px;
+    margin-bottom: 30px;
+}
+
+section#hero .hero-title,
+section#chart-section .chart-section-title {
+    font-size: 20px;
+    background-color: var(--primary-bg);
+    padding: 3px;
+    color: var(--secondary-bg);
+    margin-bottom: 50px;
+    position: absolute;
+    left: 0;
+}
+
+section#hero div.card-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: center;
+    column-gap: 30px;
+    row-gap: 30px;
+    width: 100%;
+    padding: 90px;
+}
+
+section#hero div.card-container div.card {
+    width: 260px;
+    height: 150px;
+    padding: 30px;
+    cursor: pointer;
+}
+
+.count {
+    font-size: 40px;
+    float: right;
+}
+
+/* debut chart section */
+
+section#chart-section {
+    border: 1px solid var(--dark-border);
+    position: relative;
+    padding: 0 20px 0 20px;
+    margin-bottom: 30px;
+    position: relative;
+}
+
+section#chart-section div.chart-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+}
+
+div.chart-bar {
+    width: 75%;
+}
+
+div.chart-donut {
+    width: 25%;
+}
+
+div.user-card {
+    background-color: var(--primary-bg);
+    color: var(--secondary-bg);
+}
+
+div.category-card {
+    background-color: var(--text-success);
+    color: var(--secondary-bg);
+}
+
+div.other-card {
+    background-color: var(--text-warning);
+    color: var(--secondary-bg);
+}
+
+button#open-btn
+{
+    transition: .4s;
+    border: none;
+    padding: 10px 20px;
+    font-size: 15px;
+    transition: .4s ease-in-out;
+}
+
+div.btn-toggler-container{
+    margin-bottom: 40px;
+    display: flex;
+    justify-content: flex-end;
+}

@@ -1,0 +1,41 @@
+/*debut footer css */
+footer table.table{
+    width: 100%;
+}
+
+footer table , th , td {
+    border-collapse: collapse;
+}
+
+footer table th{
+    font-size: 40px;
+}
+
+
+footer table th , table td{
+    padding: 10px;
+}
+
+footer table tbody tr td{
+    padding: 20px;
+}
+
+
+footer table tfoot{
+    background-color: var(--text-secondary);
+}
+
+footer table {
+    border:1px solid var(--border-color);
+    background-color: var(--secondary-bg);
+}
+
+footer tr td{
+    text-align: center;
+}
+
+footer tfoot tr td{
+    padding: 10px;
+}
+
+/* fin footer */

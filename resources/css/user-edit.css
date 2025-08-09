@@ -1,0 +1,52 @@
+div.edit-form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+div.edit-form-container form {
+    padding: 20px;
+    background-color: var(--secondary-bg);
+    width: 500px;
+    border-radius: 2px;
+    color: var(--text-dark);
+}
+
+.form-title {
+    font-size: 20px;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+form .input-wrapper {
+    margin-bottom: 15px;
+}
+
+form input {
+    width: 100%;
+    outline: none;
+    margin-top: 5px;
+    background-color: var(--input-bg);
+}
+
+form input:hover{
+    background-color: var(--nav-hover);
+}
+
+form .edit-btn {
+    padding: 19px !important;
+    width: 100%;
+    margin-bottom: 15px;
+    cursor: pointer;
+}
+
+div.alternative-link {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+p.is-empty{
+    color: var('--secondary-bg');
+}
