@@ -31,8 +31,6 @@
                 <span class="item-count">[ {{ $itemCount }} ]</span>
             @endif
         </a> --}}
-
-
         @if (Auth::check() && Auth::user()->isAdmin())
             <a href="{{ route('dashboard') }}"
                 class=" {{ request()->routeIs('dashboard') ? 'active' : ' ' }} nav-item">

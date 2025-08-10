@@ -27,7 +27,7 @@ import 'animate.css';
 
 document.addEventListener('DOMContentLoaded', () => {
     Waves.init();
-    Waves.attach('button', ['waves-ligth']);
+    Waves.attach('button', ['waves-light']);
 
     AOS.init({
         duration:400,

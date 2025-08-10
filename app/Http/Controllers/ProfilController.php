@@ -24,7 +24,7 @@ class ProfilController extends Controller
     {
         $user = User::findOrFail($id);
 
-        return view('profil.edit-profil', compact('user'));
+        return view('profil.edit', compact('user'));
     }
 
     /**
@@ -37,10 +37,9 @@ class ProfilController extends Controller
         $request->validate([
             'name' => ['required', 'string', 'between:3,10'],
             'first_name' => ['required', 'string', 'between:3,20'],
-            'email' => ['required', 'email', Rule::unique('users')->ignore($user->id)],
         ]);
 
-        $user->update($request->only('name', 'first_name', 'email'));
+        $user->update($request->only('name', 'first_name'));
 
         return redirect()->route('profils.index')->with('status', 'Informations mis à jour avec succès.');
     }

@@ -6,7 +6,9 @@
 
 @section('content')
     <div class="form-container">
+
         <x-status/>
+        
             <table>
                 <thead>
                     <tr>
