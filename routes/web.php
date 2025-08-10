@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\AboutController;
-use App\Http\Controllers\admin\CartController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\admin\CategoryController;
 use App\Http\Controllers\admin\DashboardController;
 use App\Http\Controllers\admin\ProductController;
@@ -26,11 +26,11 @@ Route::middleware('auth')->group(function (): void {
     Route::resource('profils', ProfilController::class)->except(['store', 'show']);
     Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
     Route::resource('users', UserController::class)->except(['store']);
-    // Route::resource('cart', CartController::class)->except(['show']);
+    Route::resource('cart', CartController::class)->except(['show']);
     Route::resource('categories', CategoryController::class)->except(['show']);
     Route::resource('products', ProductController::class);
     // Route::get('/cart/commander', [CartController::class, 'commander'])->name('cart.commander');
-    // Route::get('/cart/annule', [CartController::class, 'annuler'])->name('cart.annuler');
+    Route::get('/cart/annule', [CartController::class, 'annuler'])->name('cart.annuler');
 });
 
 Route::get('/about', [AboutController::class, 'about'])->name('about');

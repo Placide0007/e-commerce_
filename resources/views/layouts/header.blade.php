@@ -24,13 +24,13 @@
         <a href="{{ route('profils.index') }}" class="nav-item">
             Profile
         </a>
-        {{-- <a href="{{ route('cart.index') }}" class="{{ request()->routeIs('cart.index') ? 'active' : '' }} nav-item">
+        <a href="{{ route('cart.index') }}" class="{{ request()->routeIs('cart.index') ? 'active' : '' }} nav-item">
             Panier
             <i class="bi bi-cart mx-3"></i>
             @if (Auth::check())
                 <span class="item-count">[ {{ $itemCount }} ]</span>
             @endif
-        </a> --}}
+        </a>
         @if (Auth::check() && Auth::user()->isAdmin())
             <a href="{{ route('dashboard') }}"
                 class=" {{ request()->routeIs('dashboard') ? 'active' : ' ' }} nav-item">

@@ -48,6 +48,7 @@ class ProductController extends Controller
         if ($store_product_request->hasFile('product_image')) {
             $imgpath = $store_product_request->file('product_image')->store('images', 'public');
         }
+        
         Product::create([
             'product_name' => $store_product_request->product_name,
             'product_price' => $store_product_request->product_price,

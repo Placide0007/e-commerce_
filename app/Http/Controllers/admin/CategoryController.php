@@ -40,6 +40,7 @@ class CategoryController extends Controller
             ]);
 
             return redirect()->route('categories.index')->with('status', 'categorie cree avec succees');
+            
         } catch (\Throwable $th) {
             return back()->withErrors([
                 'category_name' => 'Erreur lors de la création de la catégorie',

@@ -3,7 +3,7 @@
 @section('title', 'Panier')
 
 @php
-    $hideFooter = true ;
+    $hideFooter = true;
 @endphp
 
 @vite(['resources/css/cart.css'])
@@ -16,11 +16,11 @@
             @php
                 $total = 0;
                 foreach ($cart as $item) {
-                    $total += $item['price'] * $item['quantity'];
+                    $total += $item['product_price'] * $item['quantity'];
                 }
             @endphp
 
-            <x-status/>
+            <x-status />
 
             <table border="1">
                 <thead>
@@ -36,19 +36,29 @@
                 <tbody>
                     @foreach ($cart as $id => $item)
                         <tr>
-                            <td><img src="{{ asset('images/' . $item['image']) }}" width="30" alt="{{ $item['name'] }}">
+                            <td>
+                                <img src="{{ asset('images/' . $item['product_image']) }}" width="50" alt="{{ $item['product_name'] }}">
+                                </td>
+                            <td>
+                                {{ $item['product_name'] }}
                             </td>
-                            <td>{{ $item['name'] }}</td>
-                            <td>{{ number_format($item['price'], 0, ',', ' ') }} Ar</td>
-                            <td>{{ $item['quantity'] }}</td>
-                            <td>{{ number_format($item['price'] * $item['quantity'], 0, ',', ' ') }} Ar</td>
+                            <td>
+                                {{ number_format($item['product_price'], 0, ',', ' ') }} Ar
+                            </td>
+                            <td>
+                                {{ $item['quantity'] }}
+                            </td>
+                            <td>
+                                {{ number_format($item['product_price'] * $item['quantity'], 0, ',', ' ') }} Ar
+                            </td>
                             <td class="form-container">
                                 <form class="update-quantity" action="{{ route('cart.update', $id) }}" method="POST">
                                     @csrf
                                     @method('PUT')
                                     <div class="tools-container">
                                         <label for="quantity">Quantite a retirer</label>
-                                        <x-input class="quantity" type="number" name="quantity" min="1" max="{{$item['quantity']}}"/>
+                                        <x-input class="quantity" type="number" name="quantity" min="1"
+                                            max="{{ $item['quantity'] }}" />
                                         <button type="submit" class="btn-primary">Retirer</button>
                                     </div>
                                 </form>
@@ -63,22 +73,19 @@
                     @endforeach
                 </tbody>
                 <tfoot>
-                    <tr>
+                    <tr class="totals" >
                         <td colspan="5" class="text-total">Total</td>
                         <td class="total" colspan="1">{{ number_format($total, 0, ',', ' ') }} Ar</td>
                     </tr>
                 </tfoot>
             </table>
+
             <div class="choice">
-                <a href="{{ route('cart.commander') }}" class="btn-success">
-                    Commander
-                </a>
-                <a href="{{ route('cart.annuler') }}" class="btn-danger">
-                    Annuler
-                </a>
+                {{-- <a href="{{ route('cart.commander') }}" class="btn-success">Commander</a> --}}
+                <a href="{{ route('cart.annuler') }}" class="btn-danger">Annuler</a>
             </div>
         @else
-            <p class="is-empty">Votre panier est vide.</p>
+            <p class="is-empty">Votre panier est vide.</p>*
         @endif
     </div>
 @endsection
