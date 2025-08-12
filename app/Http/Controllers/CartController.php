@@ -17,18 +17,7 @@ class CartController extends Controller
         return view('admin.cart.index', compact('cart'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-
+    
 
     public function store(Request $request)
     {
@@ -70,19 +59,25 @@ class CartController extends Controller
             'quantity' => 'required|integer|min:1',
         ]);
 
-
         $cart = session('cart', []);
 
-        if (!isset($cart[$id])) {
-            return redirect()->back()->with('error', 'Produit non trouvé dans le panier.');
-        }
+        
+        $quantityToRemove = $request->quantity;
 
-        $cart[$id]['quantity'] = $request->quantity;
+        $newQuantity = $cart[$id]['quantity'] - $quantityToRemove;
+
+        if ($newQuantity <= 0) {
+            unset($cart[$id]);
+        } else {
+            
+            $cart[$id]['quantity'] = $newQuantity;
+        }
 
         session(['cart' => $cart]);
 
         return redirect()->back()->with('status', 'Quantité mise à jour avec succès.');
     }
+
 
 
     public function annuler()

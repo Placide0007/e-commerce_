@@ -36,10 +36,11 @@
             @empty
                 <p class="nothing">Aucun Produit</p>
             @endforelse
-
-            <div class="products-pagination">
-                {{ $products->links('pagination::default') }}
-            </div>
         </div>
+
+        <div class="products-pagination">
+            {{ $products->links('pagination::default') }}
+        </div>
+        
     </section>
 @endsection

@@ -6,7 +6,10 @@ import 'node-waves/dist/waves.css';
 import Chart from 'chart.js/auto';
 window.Chart = Chart;
 
-import 'bootstrap-icons/font/bootstrap-icons.min.css';
+
+
+import 'bootstrap/dist/js/bootstrap.min.js';
+import 'bootstrap-icons/font/bootstrap-icons.css';
 
 import toastr from 'toastr';
 import 'toastr/build/toastr.min.css';
