@@ -1,0 +1,22 @@
+aside {
+    width: 15%;
+}
+
+aside ul {
+    position: sticky;
+    top: 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 80px;
+    align-items: center;
+    padding-top: 50px;
+}
+
+aside ul li{
+    list-style: none;
+}
+
+aside ul li a {
+   color: var(--secondary-bg);
+   text-decoration: none;
+}

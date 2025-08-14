@@ -5,47 +5,46 @@
 @vite(['resources/css/dashboard.css', 'resources/js/aside.js'])
 
 @section('content')
-    {{-- @include('layouts.aside') --}}
-    <div class="container">
-       <div class="btn-toggler-container">
-             <button class="btn-primary" id="open-btn">&#9776;</button>
-       </div>
-        <section id="hero">
-            <p class="hero-title">Resume Global</p>
-            <div class="card-container">
-                <div class="card user-card">
-                    <p>Utilisateur</p>
-                    <i class="bi bi-people"></i>
-                    <p class="count">{{ $users->count() }}</p>
-                </div>
+    <div class="big-container">
+        @include('layouts.sidebar')
+        <div class="container">
+            <section id="hero">
+                <p class="hero-title">Resume Global</p>
+                <div class="card-container">
+                    <div class="card user-card">
+                        <p>Utilisateur</p>
+                        <i class="bi bi-people"></i>
+                        <p class="count">{{ $users->count() }}</p>
+                    </div>
 
-                <div class="card category-card">
-                    <p>Categories</p>
-                    <i class="bi bi-tag"></i>
-                    <p class="count">{{ $categories->count() }}</p>
-                </div>
+                    <div class="card category-card">
+                        <p>Categories</p>
+                        <i class="bi bi-tag"></i>
+                        <p class="count">{{ $categories->count() }}</p>
+                    </div>
 
-                <div class="card other-card">
-                    <p>Produits</p>
-                    <i class="bi bi-cart"></i>
-                    <p class="count">{{ $products->count() }}</p>
-                </div>
+                    <div class="card other-card">
+                        <p>Produits</p>
+                        <i class="bi bi-cart"></i>
+                        <p class="count">{{ $products->count() }}</p>
+                    </div>
 
-            </div>
-        </section>
-        <section id="chart-section">
-            <p class="chart-section-title">Données analytiques</p>
-            <div class="chart-container">
-                <div class="chart-bar">
-                    {!! $user_chart->container() !!}
                 </div>
+            </section>
+            <section id="chart-section">
+                <p class="chart-section-title">Données analytiques</p>
+                <div class="chart-container">
+                    <div class="chart-bar">
+                        {!! $user_chart->container() !!}
+                    </div>
 
-                <div class="chart-donut">
-                    {!! $category_chart->container() !!}
+                    <div class="chart-donut">
+                        {!! $category_chart->container() !!}
+                    </div>
                 </div>
-            </div>
-        </section>
+            </section>
 
+        </div>
     </div>
 @endsection
 

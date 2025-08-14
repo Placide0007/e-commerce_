@@ -5,14 +5,14 @@ div.container {
     border-radius: 2px;
     padding: 10px;
     transition: .4s;
-    margin-left: 0;
+    width: 85%;
 }
 
 div.big-container {
-    background-color: var(--secondary-bg);
+    background-color: var(--primary-bg);
+    display: flex;
+    justify-content: center;
 }
-
-/* div.big-container{} */
 
 
 section#hero {
