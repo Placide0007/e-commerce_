@@ -10,116 +10,71 @@ use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
         $products = Product::with('category')->paginate(5);
-
         return view('admin.product.index', compact('products'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        $categories = Category::all();
-
-        return view('admin.product.create', compact('categories'));
+        return view('admin.product.create', ['categories' => Category::all()]);
     }
 
     public function show(string $id)
     {
-        $product = Product::findOrFail($id);
-
-        return view('admin.product.show', compact('product'));
+        return view('admin.product.show', ['product' => Product::findOrFail($id)]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(StoreProductRequest $store_product_request)
-    {   
-        dd($store_product_request->file('product_image'));
+    public function store(StoreProductRequest $request)
+    {
+        $data = $request->validated();
 
-        $imgpath = null;
+        $data['product_image'] = $this->uploadImage($request);
 
-        if ($store_product_request->hasFile('product_image')) {
-            $imgpath = $store_product_request->file('product_image')->store('images', 'public');
-        }
-
-        Product::create([
-            'product_name' => $store_product_request->product_name,
-            'product_price' => $store_product_request->product_price,
-            'product_stock' => $store_product_request->product_stock,
-            'product_description' => $store_product_request->product_description,
-            'category_id' => $store_product_request->category_id,
-            'product_image' => $imgpath ?? null,
-        ]);
+        Product::create($data);
 
         return redirect()->route('products.index')->with('status', 'Produit ajouté avec succès');
     }
 
-    /**
-     * Display the specified resource.
-     */
-
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(string $id)
     {
-        $product = Product::findOrFail($id);
-        $categories = Category::all();
-
-        return view('admin.product.create', compact('product', 'categories'));
+        return view('admin.product.create', [
+            'product' => Product::findOrFail($id),
+            'categories' => Category::all()
+        ]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(StoreProductRequest $store_product_request, string $id)
+    public function update(StoreProductRequest $request, string $id)
     {
-
         $product = Product::findOrFail($id);
+        $data = $request->validated();
+        $data['product_image'] = $this->uploadImage($request, $product->product_image);
 
-        $product->product_name = $store_product_request->input('product_name');
-        $product->product_price = $store_product_request->input('product_price');
-        $product->product_stock = $store_product_request->input('product_stock');
-        $product->product_description = $store_product_request->input('product_description');
-        $product->category_id = $store_product_request->input('category_id');
-
-        if ($store_product_request->hasFile('product_image')) {
-
-            if ($product->product_image) {
-                Storage::delete('public/' . $product->product_image);
-            }
-
-            $imgpath = $store_product_request->file('product_image')->store('images', 'public');
-            $product->product_image = $imgpath;
-        }
-
-        $product->save();
-
+        $product->update($data);
+        
         return redirect()->route('products.index')->with('status', 'Produit modifié avec succès');
     }
 
-
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(string $id)
     {
         $product = Product::findOrFail($id);
-
         if ($product->product_image) {
             Storage::delete('public/' . $product->product_image);
         }
-
         $product->delete();
 
-        return back()->with('status', 'produit supprime avec succees');
+        return back()->with('status', 'Produit supprimé avec succès');
+    }
+
+    private function uploadImage($request, $oldImage = null)
+    {
+        if (!$request->hasFile('product_image')) return $oldImage;
+
+        if ($oldImage) {
+            Storage::delete('public/' . $oldImage);
+        }
+
+        return $request->file('product_image')->store('images', 'public');
     }
 }

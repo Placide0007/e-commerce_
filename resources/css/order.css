@@ -1,0 +1,71 @@
+div.container {
+    background-color: var(--secondary-bg);
+    padding: 5px;
+    margin: 2px;
+    display: flex;
+    justify-content: center;
+}
+
+div.order-form {
+    border: 1px solid var(--dark-border);
+    width: 40%;
+    padding: 20px;
+}
+
+div.input-wrapper {
+    margin-bottom: 20px;
+}
+
+div.order-form input {
+    padding: 15px;
+    background-color: var(--input-bg);
+    margin-top: 5px;
+}
+
+div.order-form button{
+    width: 100%;
+}
+
+div.order-form h1 {
+    font-size: 25px;
+    text-align: center;
+    margin-bottom: 40px;
+
+}
+
+div.container form input , textarea{
+    width: 100%;
+}
+
+div.container form label {
+    margin-bottom: 5px;
+}
+
+div.order-summary {
+    border: 1px solid var(--dark-border);
+    width: 60%;
+    padding: 20px;
+    overflow-y: scroll;
+    height: 600px;
+}
+
+table{
+    width: 100%;
+    border-collapse: collapse;
+    padding: 30px;
+    margin-top: 10px;
+    text-align: left;
+}
+
+tr , td , th {
+    padding:20px;
+}
+
+tr.total{
+    font-weight: bold;
+}
+
+tr.total td{
+      font-size: 25px ;
+}
+

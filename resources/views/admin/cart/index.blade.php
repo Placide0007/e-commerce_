@@ -37,8 +37,9 @@
                     @foreach ($cart as $id => $item)
                         <tr>
                             <td>
-                                <img src="{{ asset('images/' . $item['product_image']) }}" width="50" alt="{{ $item['product_name'] }}">
-                                </td>
+                                <img src="{{ asset('images/' . $item['product_image']) }}" width="50"
+                                    alt="{{ $item['product_name'] }}">
+                            </td>
                             <td>
                                 {{ $item['product_name'] }}
                             </td>
@@ -57,7 +58,7 @@
                                     @method('PUT')
                                     <div class="tools-container">
                                         <label for="quantity">Quantite a retirer</label>
-                                        <x-input class="quantity" type="number" name="quantity" min="1"
+                                        <x-input class="quantity" type="number" required name="quantity" min="1"
                                             max="{{ $item['quantity'] }}" />
                                         <button type="submit" class="btn-primary">Retirer</button>
                                     </div>
@@ -73,7 +74,7 @@
                     @endforeach
                 </tbody>
                 <tfoot>
-                    <tr class="totals" >
+                    <tr class="totals">
                         <td colspan="5" class="text-total">Total</td>
                         <td class="total" colspan="1">{{ number_format($total, 0, ',', ' ') }} Ar</td>
                     </tr>
@@ -81,11 +82,12 @@
             </table>
 
             <div class="choice">
-                {{-- <a href="{{ route('cart.commander') }}" class="btn-success">Commander</a> --}}
+                <a href="{{ route('order') }}" class="btn-success">Commander</a>
                 <a href="{{ route('cart.annuler') }}" class="btn-danger">Annuler</a>
             </div>
+
         @else
-            <p class="is-empty">Votre panier est vide.</p>*
+            <p class="is-empty">Votre panier est vide.</p>
         @endif
     </div>
 @endsection

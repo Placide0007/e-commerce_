@@ -6,7 +6,7 @@
 
 @section('content')
 
-    {{-- section hero --}}
+    <x-status/>
 
     <section id="hero" style="width: 100%">
         <p class="hero-title">Upgradez votre PC</p>

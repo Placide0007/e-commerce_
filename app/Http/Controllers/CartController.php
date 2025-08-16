@@ -7,34 +7,27 @@ use Illuminate\Http\Request;
 
 class CartController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        $cart = session('cart', []);
-
-        return view('admin.cart.index', compact('cart'));
+        return view('admin.cart.index', [
+            'cart' => session('cart', [])
+        ]);
     }
-
-    
 
     public function store(Request $request)
     {
-        $request->validate([
+        $data = $request->validate([
             'product_id' => 'required|exists:products,id',
             'quantity' => 'required|integer|min:1',
         ]);
 
-        $product = Product::findOrFail($request->product_id);
+        $product = Product::findOrFail($data['product_id']);
 
-
-        if ($request->quantity > $product->product_stock) {
+        if ($data['quantity'] > $product->product_stock) {
             return back()->withErrors([
                 'quantity' => 'La quantité saisie dépasse le stock actuel.'
             ])->withInput();
         }
-
 
         $cart = session('cart', []);
 
@@ -43,15 +36,13 @@ class CartController extends Controller
             'product_name' => $product->product_name,
             'product_price' => $product->product_price,
             'product_image' => $product->product_image,
-            'quantity' => ($cart[$product->id]['quantity'] ?? 0) + $request->quantity,
+            'quantity' => ($cart[$product->id]['quantity'] ?? 0) + $data['quantity'],
         ];
 
         session(['cart' => $cart]);
 
         return redirect()->route('home');
     }
-
-
 
     public function update(Request $request, $id)
     {
@@ -61,47 +52,41 @@ class CartController extends Controller
 
         $cart = session('cart', []);
 
-        
-        $quantityToRemove = $request->quantity;
+        if (!isset($cart[$id])) {
+            return back()->withErrors(['error' => 'Produit non trouvé dans le panier.']);
+        }
 
-        $newQuantity = $cart[$id]['quantity'] - $quantityToRemove;
+        $newQuantity = $cart[$id]['quantity'] - $request->quantity;
 
         if ($newQuantity <= 0) {
             unset($cart[$id]);
         } else {
-            
             $cart[$id]['quantity'] = $newQuantity;
         }
 
         session(['cart' => $cart]);
 
-        return redirect()->back()->with('status', 'Quantité mise à jour avec succès.');
+        return back()->with('status', 'Quantité mise à jour avec succès.');
     }
-
-
 
     public function annuler()
     {
         session()->forget('cart');
-
         return redirect()->route('home');
     }
 
-
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy($id)
     {
         $cart = session('cart', []);
 
         if (!isset($cart[$id])) {
-            return redirect()->back()->with('error', 'Produit non trouvé dans le panier.');
+            return back()->withErrors(['error' => 'Produit non trouvé dans le panier.']);
         }
 
         unset($cart[$id]);
+        
         session(['cart' => $cart]);
 
-        return redirect()->back()->with('status', 'Produit retiré du panier.');
+        return back()->with('status', 'Produit retiré du panier.');
     }
 }
