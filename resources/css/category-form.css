@@ -1,11 +1,11 @@
-div.categoy-form-container{
+div.category-form-container{
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
 }
 
-div.categoy-form-container form{
+div.category-form-container form{
     padding: 20px;
     background-color: var(--secondary-bg);
     width: 500px;
@@ -34,16 +34,11 @@ form input:hover{
     background-color: var(--nav-hover);
 }
 
-div.categoy-form-containerform button {
+div.category-form-container form button {
     padding: 19px !important ;
     width: 100%;
     margin-bottom: 15px;
     cursor: pointer;
 }
 
-div.alternative-link{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
 

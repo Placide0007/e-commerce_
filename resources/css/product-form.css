@@ -39,6 +39,10 @@ form input:hover{
     background-color: var(--nav-hover);
 }
 
+form select{
+    margin-bottom: 10px;
+}
+
 div.form-container form button {
     padding: 19px !important ;
     width: 100%;

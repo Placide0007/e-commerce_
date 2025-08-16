@@ -85,7 +85,7 @@ body {
 }
 
 input,
-select {
+select , textarea {
     padding: 13px;
     outline: none;
     border: 1px solid var(--dark-border);

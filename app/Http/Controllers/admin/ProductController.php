@@ -41,14 +41,15 @@ class ProductController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(StoreProductRequest $store_product_request)
-    {
+    {   
+        dd($store_product_request->file('product_image'));
 
         $imgpath = null;
 
         if ($store_product_request->hasFile('product_image')) {
             $imgpath = $store_product_request->file('product_image')->store('images', 'public');
         }
-        
+
         Product::create([
             'product_name' => $store_product_request->product_name,
             'product_price' => $store_product_request->product_price,
@@ -81,29 +82,30 @@ class ProductController extends Controller
      */
     public function update(StoreProductRequest $store_product_request, string $id)
     {
+
         $product = Product::findOrFail($id);
 
         $product->product_name = $store_product_request->input('product_name');
         $product->product_price = $store_product_request->input('product_price');
         $product->product_stock = $store_product_request->input('product_stock');
         $product->product_description = $store_product_request->input('product_description');
-        $product->product_image = $store_product_request->input('product_image');
+        $product->category_id = $store_product_request->input('category_id');
 
         if ($store_product_request->hasFile('product_image')) {
 
             if ($product->product_image) {
-                Storage::delete('public/'.$product->product_image);
+                Storage::delete('public/' . $product->product_image);
             }
 
             $imgpath = $store_product_request->file('product_image')->store('images', 'public');
-
             $product->product_image = $imgpath;
-
-            $product->save();
-
-            return redirect()->route('products.index', compact('product'))->with('status', 'Produit modifié avec succès');
         }
+
+        $product->save();
+
+        return redirect()->route('products.index')->with('status', 'Produit modifié avec succès');
     }
+
 
     /**
      * Remove the specified resource from storage.
@@ -113,7 +115,7 @@ class ProductController extends Controller
         $product = Product::findOrFail($id);
 
         if ($product->product_image) {
-            Storage::delete('public/'.$product->product_image);
+            Storage::delete('public/' . $product->product_image);
         }
 
         $product->delete();

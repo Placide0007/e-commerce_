@@ -16,6 +16,7 @@ class CategoryController extends Controller
     public function index(Request $request)
     {
         $search = $request->search;
+
         $categories = Category::where('category_name', 'like', "%$search%")->paginate(5);
 
         return view('admin.category.index', compact('categories'));
@@ -75,7 +76,7 @@ class CategoryController extends Controller
 
         $category->save();
 
-        return redirect()->route('categories.index', $category->id)->with('status', 'Catégorie mise à jour avec succès.');
+        return redirect()->route('categories.index')->with('status', 'Catégorie mise à jour avec succès.');
     }
 
     /**
@@ -87,6 +88,7 @@ class CategoryController extends Controller
 
         $category->delete();
 
-        return redirect()->route('categories.index', $category)->with('status', 'Catégorie supprimée avec succès');
+        return redirect()->route('categories.index')->with('status', 'Catégorie supprimée avec succès');
+
     }
 }
