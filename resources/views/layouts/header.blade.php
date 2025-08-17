@@ -26,9 +26,8 @@
         </a>
         <a href="{{ route('cart.index') }}" class="{{ request()->routeIs('cart.index') ? 'active' : '' }} nav-item">
             Panier
-            <i class="bi bi-cart mx-3"></i>
             @if (Auth::check())
-                <span class="item-count">[ {{ $itemCount }} ]</span>
+                <span class="item-count"> {{ $itemCount }} </span>
             @endif
         </a>
         @if (Auth::check() && Auth::user()->isAdmin())

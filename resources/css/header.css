@@ -50,7 +50,10 @@ header.navbar .tools{
 }
 
 span.item-count{
-    color: var(--text-danger);
+    background-color: var(--text-danger);
+    color: white;
+    padding: 3px;
+    border-radius: 3px;
 }
 
 /*fin header css */

@@ -75,8 +75,8 @@
                 </tbody>
                 <tfoot>
                     <tr class="totals">
-                        <td colspan="5" class="text-total">Total</td>
-                        <td class="total" colspan="1">{{ number_format($total, 0, ',', ' ') }} Ar</td>
+                        <td colspan="4" class="text-total">Total</td>
+                        <td class="total" colspan="2">{{ number_format($total, 0, ',', ' ') }} Ar</td>
                     </tr>
                 </tfoot>
             </table>

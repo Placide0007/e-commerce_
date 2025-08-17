@@ -30,6 +30,6 @@ class OrderController extends Controller
             'telephone' =>  $order_request->telephone,
         ]);
 
-         return redirect()->route('home')->with('status', 'Commande envoyer avec succee');
+        return redirect()->route('home')->with('status', 'Commande envoyer avec succee');
     }
 }

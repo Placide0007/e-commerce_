@@ -43,7 +43,7 @@ div.container form label {
 
 div.order-summary {
     border: 1px solid var(--dark-border);
-    width: 60%;
+    width: 80%;
     padding: 20px;
     overflow-y: scroll;
     height: 600px;

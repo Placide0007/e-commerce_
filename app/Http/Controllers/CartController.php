@@ -72,6 +72,7 @@ class CartController extends Controller
     public function annuler()
     {
         session()->forget('cart');
+        
         return redirect()->route('home');
     }
 
