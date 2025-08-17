@@ -2,6 +2,7 @@
 
 @php
     $cart = session('cart', []);
+
     $itemCount = 0;
 
     foreach ($cart as $item) {
@@ -18,18 +19,21 @@
         <a href="{{ route('home') }}" class="{{ request()->routeIs('home') ? 'active' : '' }} nav-item">
             Accueil
         </a>
+        
         <a href="{{ route('about') }}" class="{{ request()->routeIs('about') ? 'active' : '' }} nav-item">
             A propos
         </a>
-        <a href="{{ route('profils.index') }}" class="nav-item">
+        <a href="{{ route('profils.index') }}" class="{{ request()->routeIs('profils.index') ? 'active' : '' }} nav-item">
             Profile
         </a>
+
         <a href="{{ route('cart.index') }}" class="{{ request()->routeIs('cart.index') ? 'active' : '' }} nav-item">
             Panier
             @if (Auth::check())
                 <span class="item-count"> {{ $itemCount }} </span>
             @endif
         </a>
+
         @if (Auth::check() && Auth::user()->isAdmin())
             <a href="{{ route('dashboard') }}"
                 class=" {{ request()->routeIs('dashboard') ? 'active' : ' ' }} nav-item">
