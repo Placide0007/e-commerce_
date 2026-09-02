@@ -8,7 +8,7 @@
                 E_Commerce
             </p>
 
-            <p class="max-w-80 text-slate-400 text-xs leading-5">
+            <p class="max-w-80 text-slate-400 text-xs leading-10">
                 Lorem ipsum dolor sit amet consectetur, adipisicing elit. Unde corrupti dolor neque cupiditate eius possimus? Totam, placeat. Quaerat, ullam laborum.
             </p>
 

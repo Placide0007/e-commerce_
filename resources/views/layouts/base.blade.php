@@ -9,9 +9,9 @@
 </head>
 
 <body>
-    <main class="min-h-screen flex flex-col text-slate-800">
+    <main class="min-h-screen flex flex-col text-slate-800 ">
         <x-header />
-        <section class="content grow ">
+        <section class="content grow">
             @yield('content')
         </section>
         <x-footer />

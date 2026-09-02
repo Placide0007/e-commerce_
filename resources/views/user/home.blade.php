@@ -25,14 +25,6 @@
 
                 <div class="text-slate-800 shadow-xs border border-slate-300 bg-white rounded">
 
-                    <p class="py-2 bg-white">
-
-                        <span class="font-bold text-xl mx-2 text-red-400">-40%</span>
-
-                        <span class="text-xs mx-1 font-semibold">Meilleure offre</span>
-
-                    </p>
-
                     <img class="h-auto w-full object-cover" src="{{ asset('images/legume.jpg') }}" alt="">
 
                     <div class="flex flex-col gap-1 text-end p-4">

@@ -1,9 +1,17 @@
 @extends('layouts.auth')
+
 @section('title','Inscription')
+
 @section('content')
+
     <div class="flex justify-center items-center min-h-screen" >
+
         <form class="bg-gray-50 p-5 w-95  flex flex-col gap-7" action="" method="post">
+
+            @csrf
+
             <p class="text-center font-semibold mb-5" >Inscripton</p>
+
             <div>
                 <input placeholder="Nom" class="w-full border bg-gray-300  p-4 border-slate-300"  type="text" name="" id="">
             </div>
@@ -24,5 +32,7 @@
             </div>
             
         </form>
+
     </div>
+
 @endsection
