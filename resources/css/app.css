@@ -1,0 +1,25 @@
+@import "tailwindcss";
+
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../**/*.blade.php';
+@source '../**/*.js';
+
+
+
+body {
+    font-size: 13px;
+    font-family: 'Poppins', 'raleway', 'JetBrains Mono', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+input,
+button,
+a,
+form {
+    @apply rounded-xs
+}
+
+h2 {
+    font-family: Raleway;
+}
