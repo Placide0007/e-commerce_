@@ -19,6 +19,7 @@
         </thead>
 
         <tbody>
+
             <tr class="border border-slate-200 hover:bg-slate-50">
 
                 <td class="border p-1 border-slate-200 ">
@@ -46,6 +47,7 @@
                 </td>
 
             </tr>
+            
         </tbody>
 
     </table>

@@ -1,3 +1,11 @@
+@extends('layouts.admin')
+
+@section('title', 'Orders|Admin')
+
+@section('content')
+
 <div>
-    <!-- Well begun is half done. - Aristotle -->
+    <p>ici commandes</p>
 </div>
+
+@endsection

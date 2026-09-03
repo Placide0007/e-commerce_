@@ -1,3 +1,11 @@
+@extends('layouts.admin')
+
+@section('title', 'Categories|Admin')
+
+@section('content')
+
 <div>
-    <!-- No surplus words or unnecessary actions. - Marcus Aurelius -->
+    <p>categories here</p>
 </div>
+
+@endsection

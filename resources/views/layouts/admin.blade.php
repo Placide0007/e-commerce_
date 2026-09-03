@@ -9,6 +9,7 @@
 </head>
 
 <body>
+    @apexchartsScripts
     <main>
         <x-aside/>
         <section class="content grow ml-[15%] py-5 px-5 w-[85%]">
