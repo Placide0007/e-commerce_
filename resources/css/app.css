@@ -20,6 +20,6 @@ form {
     @apply rounded-xs
 }
 
-h2 , table {
+h2 , table , span {
     font-family: Raleway;
 }

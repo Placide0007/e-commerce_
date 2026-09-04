@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <section class="content bg-slate-950">
+    <section class="content bg-yellow-50">
         @yield('content')
     </section>
 </body>

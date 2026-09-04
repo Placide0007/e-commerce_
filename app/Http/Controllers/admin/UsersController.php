@@ -16,7 +16,7 @@ class UsersController extends Controller
     {
         $users = User::all();
 
-        return view('admin.users.index',compact('users'));
+        return view('admin.users.index', compact('users'));
     }
 
     /**
@@ -24,7 +24,7 @@ class UsersController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.users.create');
     }
 
     /**
@@ -33,18 +33,22 @@ class UsersController extends Controller
     public function store(Request $request)
     {
         $fields = $request->validate([
-            'name' => ['required','string'],
-            'email' => ['required','email'],
-            'password' => ['required','string','min:8'],
-            'role' => 'admin'
+            'name' => ['required', 'string'],
+            'email' => ['required', 'email', 'unique:users,email'],
+            'password' => ['required', 'string', 'min:8'],
+            'role' => ['required', 'in:admin,customer'],
         ]);
 
-        User::create([
-            'name' => $fields['name'],
-            'email' => $fields['email'],
-            'password' => Hash::make($fields['password'])
-        ]);
+        $user = new User();
 
+        $user->name = $fields['name'];
+        $user->email = $fields['email'];
+        $user->password = Hash::make($fields['password']);
+        $user->role = $fields['role'];
+
+        $user->save();
+
+        return redirect()->route('users.index')->with('success', 'Utilisateur créé avec succès.');
     }
 
     /**
@@ -54,7 +58,7 @@ class UsersController extends Controller
     {
         $user = User::findOrFail($id);
 
-        return view('admin.users.show',compact('user'));
+        return view('admin.users.show', compact('user'));
     }
 
     /**
@@ -62,7 +66,9 @@ class UsersController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $user = User::findOrFail($id);
+
+        return view('admin.users.edit', compact('user'));
     }
 
     /**
@@ -70,7 +76,21 @@ class UsersController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $fields = $request->validate([
+            'name' => ['required', 'string'],
+            'email' => ['required', 'email', 'unique:users,email,' . $id],
+            'role' => ['required', 'in:admin,customer'],
+        ]);
+
+        $user = User::findOrFail($id);
+
+        $user->name = $fields['name'];
+        $user->email = $fields['email'];
+        $user->role = $fields['role'];
+
+        $user->save();
+
+        return redirect()->route('users.index')->with('success', 'Utilisateur modifié avec succès.');
     }
 
     /**
@@ -81,5 +101,7 @@ class UsersController extends Controller
         $user = User::findOrFail($id);
 
         $user->delete();
+
+        return redirect()->route('users.index')->with('success', 'Utilisateur supprimé avec succès.');
     }
 }

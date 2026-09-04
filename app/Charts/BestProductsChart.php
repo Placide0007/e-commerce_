@@ -38,8 +38,27 @@ class BestProductsChart
 
             ->setOptions([
                 'colors' => [
-                    '#1e293b',
-                    '#1e293b',
+                    '#ffffff',
+                    '#ef4444',
+                ],
+
+                'xaxis' => [
+                    'labels' => [
+                        'style' => [
+                            'colors' => '#ffffff',
+                            'fontSize' => '12px',
+                            'fontWeight' => 500,
+                        ],
+                    ],
+                ],
+
+                'yaxis' => [
+                    'labels' => [
+                        'style' => [
+                            'colors' => '#ffffff',
+                            'fontSize' => '12px',
+                        ],
+                    ],
                 ],
 
                 'plotOptions' => [
@@ -65,6 +84,15 @@ class BestProductsChart
                     'style' => [
                         'fontSize' => '12px',
                         'fontWeight' => 500,
+                        'colors' => [
+                            'red',
+                        ],
+                    ],
+                ],
+
+                'legend' => [
+                    'labels' => [
+                        'colors' => '#ffffff',
                     ],
                 ],
             ]);

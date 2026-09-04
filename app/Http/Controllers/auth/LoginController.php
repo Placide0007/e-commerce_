@@ -4,10 +4,40 @@ namespace App\Http\Controllers\auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
-    public function loginForm(){
+    public function loginForm()
+    {
         return view('auth.login');
+    }
+
+    public function login(Request $request)
+    {
+        $fields = $request->validate([
+            'email' => ['required', 'email'],
+            'password' => ['required','min:8'],
+        ]);
+
+        if (!Auth::attempt($fields)) {
+            return back()->withErrors([
+                'email' => 'Email ou mot de passe incorrect.'
+            ]);
+        }
+
+        $request->session()->regenerate();
+
+        return to_route('home');
+    }
+
+    public function logout(Request $request)
+    {
+        Auth::logout();
+
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return to_route('login');
     }
 }

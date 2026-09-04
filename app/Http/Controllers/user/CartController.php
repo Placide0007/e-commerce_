@@ -5,9 +5,9 @@ namespace App\Http\Controllers\user;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class ProfileController extends Controller
+class CartController extends Controller
 {
-    public function profile_page(){
-        return view('user.profile.index');
+    public function cart(){
+        return view('user.cart.index');
     }
 }
