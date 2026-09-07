@@ -4,51 +4,33 @@
 
         <div class="flex flex-col gap-2 py-3">
 
-            <p class="underline py-3">
-                E_Commerce
-            </p>
+            <p class="underline py-3">E_Commerce</p>
 
-            <p class="max-w-80 text-slate-400 text-xs leading-10">
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Unde corrupti dolor neque cupiditate eius possimus? Totam, placeat. Quaerat, ullam laborum.
-            </p>
+            <p class="max-w-80 text-slate-400 text-xs leading-10"> Lorem ipsum dolor sit amet consectetur, adipisicing elit. Unde corrupti dolor neque cupiditate eius possimus? Totam, placeat. Quaerat, ullam laborum.</p>
 
         </div>
 
         <div class="flex flex-col gap-2 py-3">
 
-            <p class="underline py-3">
-                Navigation
-            </p>
+            <p class="underline py-3">Navigation</p>
 
-            <a class="text-slate-400 text-xs hover:text-white transition" href="{% url 'home' %}">
-                Accueil
-            </a>
+            <a class="text-slate-400 text-xs hover:text-white transition" href="">Accueil</a>
 
             @auth
-                <a class="text-slate-400 text-xs hover:text-white transition" href="{% url 'profile' %}">
-                    Mon compte
-                </a>
+                <a class="text-slate-400 text-xs hover:text-white transition" href="">Mon compte</a>
             @endauth
 
         </div>
 
         <div class="flex flex-col gap-2 py-3">
 
-            <p class="underline py-3">
-                E_commerce
-            </p>
+            <p class="underline py-3">E_commerce</p>
 
-            <p class="text-slate-400 text-xs">
-                Madagascar
-            </p>
+            <p class="text-slate-400 text-xs">Madagascar</p>
 
-            <p class="text-slate-400 text-xs">
-                Toamasina, Madagascar
-            </p>
+            <p class="text-slate-400 text-xs">Toamasina, Madagascar</p>
 
-            <p class="text-slate-400 text-xs">
-                Espace pour achat
-            </p>
+            <p class="text-slate-400 text-xs">Espace pour achat</p>
 
         </div>
 
@@ -56,13 +38,9 @@
 
     <div class="flex flex-col sm:flex-row text-slate-400 justify-between gap-2 py-4 text-xs border-slate-700 border-t">
 
-        <p>
-            &copy; 2026 E_Commerce 
-        </p>
+        <p>&copy; 2026 E_Commerce </p>
 
-        <p>
-            E_Commerce
-        </p>
+        <p>E_Commerce</p>
 
     </div>
 

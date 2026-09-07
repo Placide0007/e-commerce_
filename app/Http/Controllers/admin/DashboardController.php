@@ -5,6 +5,8 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use Akaunting\Apexcharts\Chart;
 use App\Charts\BestProductsChart;
+use App\Models\Category;
+use App\Models\Product;
 use App\Models\User;
 
 class DashboardController extends Controller
@@ -14,7 +16,11 @@ class DashboardController extends Controller
         $chart = BestProductsChart::make();
 
         $users = User::where('role', 'customer')->get();
+
+        $categories = Category::all();
+
+        $products = Product::all();
             
-        return view('admin.dashboard', compact('chart' , 'users'));
+        return view('admin.dashboard', compact('chart' , 'users','products','categories'));
     }
 }

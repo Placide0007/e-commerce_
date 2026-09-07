@@ -8,13 +8,11 @@ use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
-    public function loginForm()
-    {
+    public function loginForm() {
         return view('auth.login');
     }
 
-    public function login(Request $request)
-    {
+    public function login(Request $request) {
         $fields = $request->validate([
             'email' => ['required', 'email'],
             'password' => ['required','min:8'],
@@ -28,16 +26,22 @@ class LoginController extends Controller
 
         $request->session()->regenerate();
 
+        if (Auth::user()->role === 'admin') {
+            return to_route('dashboard');
+        }
+
         return to_route('home');
     }
 
-    public function logout(Request $request)
-    {
+    public function logout(Request $request) {
+        
         Auth::logout();
 
         $request->session()->invalidate();
+
         $request->session()->regenerateToken();
 
         return to_route('login');
     }
 }
+

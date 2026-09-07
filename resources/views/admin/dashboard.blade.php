@@ -3,7 +3,6 @@
 @section('title', 'Dashboard|Admin')
 
 @section('content')
-
     <div>
 
         <p class=" font-semibold underline" >Dashboard Section</p>
@@ -20,21 +19,25 @@
             <div class=" rounded border  flex flex-col gap-3 justify-center items-center border-slate-300 bg-slate-50 h-25" >
                 <p class="font-semibold text-xl  text-slate-800" >Total Produits</p>
                 <h2 class="text-red-500 text-[15px]  font-bold" >
-                    34223
+                    {{ $products->count() }}
                 </h2>
             </div>
 
             <div class=" rounded border  flex flex-col gap-3 justify-center items-center border-slate-300 bg-slate-50 h-25" >
                 <p class="font-semibold text-xl  text-slate-800" >Total Categories</p>
                 <h2 class="text-red-500 text-[15px]  font-bold" >
-                    455444
+                   {{ $categories->count() }}
                 </h2>
             </div>
 
         </div>
 
         <div>
+
+            <p class="font-semibold underline mb-3"> Produits les plus vendus </p>
+
             {!! $chart->container() !!}
+            
         </div>
 
         {!! $chart->script() !!}

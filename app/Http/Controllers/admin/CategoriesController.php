@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class CategoriesController extends Controller
 {
@@ -12,7 +14,9 @@ class CategoriesController extends Controller
      */
     public function index()
     {
-        return view('admin.categories.index');
+        $categories = Category::withCount('products')->paginate(5);
+
+        return view('admin.categories.index', compact('categories'));
     }
 
     /**
@@ -20,7 +24,7 @@ class CategoriesController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.categories.create');
     }
 
     /**
@@ -28,7 +32,18 @@ class CategoriesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $fields = $request->validate([
+            'name' => ['required', 'string'],
+        ]);
+
+        $category = new Category();
+
+        $category->name = $fields['name'];
+        $category->slug = Str::slug($fields['name']) . '-' . Str::random(10);
+
+        $category->save();
+
+        return to_route('categories.index');
     }
 
     /**
@@ -36,7 +51,9 @@ class CategoriesController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $category = Category::findOrFail($id);
+
+        return view('admin.categories.show', compact('category'));
     }
 
     /**
@@ -44,7 +61,9 @@ class CategoriesController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $category = Category::findOrFail($id);
+
+        return view('admin.categories.edit', compact('category'));
     }
 
     /**
@@ -52,7 +71,19 @@ class CategoriesController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $fields = $request->validate([
+            'name' => ['required', 'string'],
+        ]);
+
+        $category = Category::findOrFail($id);
+
+        $category->name = $fields['name'];
+        $category->slug = Str::slug($fields['name']) . '-' . Str::random(10);
+
+        $category->save();
+
+        return to_route('categories.index')
+            ->with('success', 'Category modifiée avec succès');
     }
 
     /**
@@ -60,6 +91,13 @@ class CategoriesController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $category = Category::findOrFail($id);
+
+        $category->delete();
+
+        return redirect()
+            ->route('categories.index')
+            ->with('success', 'Category supprimée avec succès');
     }
 }
+

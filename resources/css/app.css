@@ -9,8 +9,8 @@
 
 
 body {
-    font-size: 13px;
-    font-family: 'Poppins', 'raleway', 'JetBrains Mono', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 14px !important;
+    font-family:'Aptos';
 }
 
 input,
@@ -20,6 +20,7 @@ form {
     @apply rounded-xs
 }
 
-h2 , table , span {
-    font-family: Raleway;
+table , span {
+    font-family: 'Aptos';
+    font-size: 14px !important;
 }

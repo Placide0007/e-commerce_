@@ -10,12 +10,15 @@
 
 <body>
     @apexchartsScripts
-    <main>
+    <main class="flex h-screen" >
         <x-aside/>
-        <section class="content grow h-screen ml-[15%] bg-slate-900 text-gray-100 py-5 px-5 w-[85%]">
+        <section class="content grow ml-[15%] bg-slate-900 text-gray-100 py-5 px-5 w-[85%] h-screen overflow-y-auto">
             @yield('content')
         </section>
     </main>
+
+    @stack('scripts')
+
 </body>
 
 </html>
