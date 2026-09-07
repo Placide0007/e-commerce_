@@ -32,6 +32,10 @@
             </span>
         </a>
 
+        @if (Auth::user()->role === 'admin')
+            <a href="{{ route('dashboard') }}" class="bg-slate-800 p-1 rounded text-xs text-gray-50" >Tableau de bord</a>
+        @endif
+
     </nav>
 
     @auth
