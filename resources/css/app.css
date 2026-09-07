@@ -1,26 +1,44 @@
 @import "tailwindcss";
 
-
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 @source '../../storage/framework/views/*.php';
 @source '../**/*.blade.php';
 @source '../**/*.js';
 
 
+@font-face {
+    font-family: 'Aptos';
+    src: url('/fonts/Aptos.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+
+
+* {
+    font-family: 'Aptos', sans-serif;
+}
 
 body {
     font-size: 14px !important;
-    font-family:'Aptos';
+    font-family: 'Aptos', sans-serif;
 }
+
+
 
 input,
 button,
 a,
 form {
-    @apply rounded-xs
+    @apply rounded-xs;
 }
 
-table , span {
-    font-family: 'Aptos';
+
+
+
+table,
+span {
+    font-family: 'Aptos', sans-serif;
     font-size: 14px !important;
 }
